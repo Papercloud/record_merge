@@ -25,6 +25,7 @@ puts "Testing with Rails #{Rails::VERSION::STRING} and Ruby #{RUBY_VERSION}"
 require 'rspec/rails'
 require 'factory_girl_rails'
 require "awesome_print"
+require 'pry'
 
 RSpec.configure do |config|
   config.mock_with :rspec
