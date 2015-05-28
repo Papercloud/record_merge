@@ -8,15 +8,18 @@ Gem::Specification.new do |s|
   s.name        = "record_merge"
   s.version     = RecordMerge::VERSION
   s.authors     = ["William Porter"]
-  s.email       = ["dawilster143@gmail.com"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of RecordMerge."
-  s.description = "TODO: Description of RecordMerge."
+  s.email       = ["wp@papercloud.com.au"]
+  s.homepage    = "http://papercloud.com.au"
+  s.summary     = "Merges ActiveRecord recods"
+  s.description = ""
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
 
-  s.add_dependency "rails", "~> 4.2.1"
+  s.add_dependency "rails", "~> 4.2"
 
-  s.add_development_dependency "sqlite3"
+  s.add_development_dependency "pg"
+  s.add_development_dependency 'rspec-rails'
+  s.add_development_dependency 'factory_girl_rails'
+  s.add_development_dependency 'awesome_print'
 end
