@@ -32,6 +32,8 @@ module RecordMerge
             source.send(relation_name).update_all("#{relation[1].foreign_key}": destination.id)
           when "ActiveRecord::Reflection::BelongsToReflection"
             destination.update("#{relation_name}": source.send(relation_name))
+          when "ActiveRecord::Reflection::HasAndBelongsToManyReflection"
+            destination.update("#{relation_name}": source.send(relation_name))
           end
         end
 
