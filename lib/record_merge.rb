@@ -7,10 +7,11 @@ module RecordMerge
     only           = options[:only] || []
     except         = options[:except] || []
     copy_relations = options[:copy_relations] || true
+    delete_source  = option[:delete_source] || true
     attributes     = sanitize_attributes(attributes)
 
     raise "classes don't match" if destination.class.base_class != source.class.base_class
-    raise "can't send only and except params" if only.any? && except.any?
+    raise "can't provide both only and except params" if only.any? && except.any?
 
     ActiveRecord::Base.transaction do
       attributes.each do |attribute|
@@ -38,8 +39,9 @@ module RecordMerge
         end
 
       end
+      source.destroy! if delete_source
 
-      source.destroy! && destination.save!
+      destination.save!
     end
 
     destination
