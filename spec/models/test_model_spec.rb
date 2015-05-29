@@ -1,16 +1,6 @@
 require 'spec_helper'
 
 describe TestModel do
-  before :each do
-
-    Relation1.class_eval do
-      belongs_to :test_model
-    end
-
-    Relation2.class_eval do
-      has_many :test_models
-    end
-  end
 
   it "has valid factory" do
     model = build(:test_model)
@@ -52,6 +42,10 @@ describe TestModel do
         TestModel.class_eval do
           has_one :relation1
         end
+
+        Relation1.class_eval do
+          belongs_to :test_model
+        end
       end
 
       it "associates source relation with destination" do
@@ -71,6 +65,10 @@ describe TestModel do
         TestModel.class_eval do
           has_many :relation1s
         end
+
+        Relation1.class_eval do
+          belongs_to :test_model
+        end
       end
 
       it "associates source relation with destination" do
@@ -89,6 +87,10 @@ describe TestModel do
       before :each do
         TestModel.class_eval do
           belongs_to :relation2
+        end
+
+        Relation2.class_eval do
+          has_many :test_models
         end
       end
 
